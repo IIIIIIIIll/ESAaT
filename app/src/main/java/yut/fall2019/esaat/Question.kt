@@ -7,7 +7,9 @@ class QuestionModel {
     @SerializedName("Questions")
     var questions = arrayListOf<Question>()
 
-     class Question : Serializable {
+    class Question : Serializable {
+        @SerializedName("id")
+        var id: Int? = null
         @SerializedName("title")
         var title: String? = null
         @SerializedName("choice1")

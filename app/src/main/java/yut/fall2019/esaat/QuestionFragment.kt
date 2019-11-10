@@ -1,6 +1,8 @@
 package yut.fall2019.esaat
 
 import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -42,7 +44,7 @@ class QuestionFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             question = it.getSerializable(ARG_PARAM1) as QuestionModel.Question?
-            Log.d("TAG", question.toString()+" frag onCreate")
+            //Log.d("TAG", question.toString()+" frag onCreate")
         }
     }
 
@@ -52,8 +54,20 @@ class QuestionFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_question, container, false)
         checkBoxLayout= v.findViewById(R.id.linearLayout_checkboxes)
         title=v.findViewById(R.id.title)
-        Log.d("TAG", question.toString()+" frag onCreateView")
+        //Log.d("TAG", question.toString()+" frag onCreateView")
         return v
+    }
+
+    private fun getScore(s : String): Int {
+        //Not at all = 0, Several days = 1, More than half the days = 2, Nearly every day = 3.
+
+        return when(s){
+            "Not at all" ->  0
+            "Several days" ->  1
+            "More than half the days" ->  2
+            "Nearly every day" ->  3
+            else -> -1
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -71,18 +85,30 @@ class QuestionFragment : Fragment() {
             cb.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             checkBoxLayout!!.addView(cb)
             checkboxes.add(cb)
-            cb.setOnCheckedChangeListener { buttonView, isChecked ->
+            cb.setOnCheckedChangeListener { _, _ ->
                 run {
-                    Log.d("TAG",cb.text.toString())
-                    //TODO save the score
-                    (context as QuestionActivity).goToNext()
+                    //Log.d("TAG",cb.text.toString())
+                    val sharedPref: SharedPreferences =  context!!.getSharedPreferences("ESAaT", 0)
+                    val editor = sharedPref.edit()
+                    val scoreName: String = if (question!!.id!! >8){
+                        "aScore"
+                    }else{
+                        "dScore"
+                    }
+                    val oldScore = sharedPref.getInt(scoreName,0)
+                    val currentScore:Int = getScore(cb.text.toString())
+                    //Log.d("TAG", currentScore.toString())
+                    editor.putInt(scoreName,oldScore+currentScore)
+                    editor.apply()
+                    if (question!!.id!! == 15){
+                        val i = Intent(context,ResultViewActivity::class.java)
+                        startActivity(i)
+                    }else{
+                        (context as QuestionActivity).goToNext()
+                    }
                 }
             }
         }
-    }
-
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
     }
 
     override fun onAttach(context: Context) {
@@ -90,7 +116,7 @@ class QuestionFragment : Fragment() {
         if (context is OnFragmentInteractionListener) {
             listener = context
         } else {
-            Log.d("TAG", question?.title)
+            //Log.d("TAG", question?.title)
             throw RuntimeException("$context must implement OnFragmentInteractionListener")
         }
     }
