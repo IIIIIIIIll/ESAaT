@@ -3,18 +3,22 @@ package yut.fall2019.esaat
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.fragment.app.FragmentActivity
+import android.widget.CompoundButton
+import android.util.TypedValue
+import android.text.Html
+import android.widget.CheckBox
 import android.widget.TextView
-import kotlinx.android.synthetic.main.fragment_question.*
 
-// TODO: Rename parameter arguments, choose names that match
+
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val ARG_PARAM1 = "questionData"
 
 /**
  * A simple [Fragment] subclass.
@@ -26,16 +30,19 @@ private const val ARG_PARAM2 = "param2"
  */
 class QuestionFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    //private var questionData: String? = null
+    private var question: QuestionModel.Question? = null
     private var listener: OnFragmentInteractionListener? = null
     private var checkBoxLayout: LinearLayout? = null
+    private var context:FragmentActivity? =null
+    private var checkboxes = arrayListOf<CheckBox>()
+    private var title: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            question = it.getSerializable(ARG_PARAM1) as QuestionModel.Question?
+            Log.d("TAG", question.toString()+" frag onCreate")
         }
     }
 
@@ -44,10 +51,36 @@ class QuestionFragment : Fragment() {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_question, container, false)
         checkBoxLayout= v.findViewById(R.id.linearLayout_checkboxes)
+        title=v.findViewById(R.id.title)
+        Log.d("TAG", question.toString()+" frag onCreateView")
         return v
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        context = activity
+
+        title!!.text = question!!.title
+
+        val choices = listOf(question!!.choice1,question!!.choice2,question!!.choice3,question!!.choice4)
+        for (choice in choices){
+            val cb = CheckBox(context)
+            cb.text = choice
+            cb.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
+            cb.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            checkBoxLayout!!.addView(cb)
+            checkboxes.add(cb)
+            cb.setOnCheckedChangeListener { buttonView, isChecked ->
+                run {
+                    Log.d("TAG",cb.text.toString())
+                    //TODO save the score
+                    (context as QuestionActivity).goToNext()
+                }
+            }
+        }
+    }
+
     fun onButtonPressed(uri: Uri) {
         listener?.onFragmentInteraction(uri)
     }
@@ -57,7 +90,8 @@ class QuestionFragment : Fragment() {
         if (context is OnFragmentInteractionListener) {
             listener = context
         } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
+            Log.d("TAG", question?.title)
+            throw RuntimeException("$context must implement OnFragmentInteractionListener")
         }
     }
 
@@ -78,7 +112,6 @@ class QuestionFragment : Fragment() {
      * for more information.
      */
     interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         fun onFragmentInteraction(uri: Uri)
     }
 
@@ -87,17 +120,19 @@ class QuestionFragment : Fragment() {
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
          *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
+         * @param questionData the string of the question
          * @return A new instance of fragment QuestionFragment.
          */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(questionData: QuestionModel.Question) =
                 QuestionFragment().apply {
                     arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
+                        //Log.d("TAG", questionData.title)
+//                        Log.d("TAG",questionData.choice1)
+//                        Log.d("TAG",questionData.choice2)
+//                        Log.d("TAG",questionData.choice3)
+//                        Log.d("TAG",questionData.choice4)
+                        putSerializable(ARG_PARAM1,questionData)
                     }
                 }
     }

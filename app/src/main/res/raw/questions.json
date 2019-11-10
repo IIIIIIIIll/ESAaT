@@ -2,123 +2,123 @@
   "Questions": [
     {
       "id": 1,
-      "Title": "How often have you been bothered by feeling down, depressed or hopeless?",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you been bothered by feeling down, depressed or hopeless?",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     },
     {
       "id": 2,
-      "Title": "How often have you had little interest or pleasure in doing things?",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you had little interest or pleasure in doing things?",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     },
     {
       "id": 3,
-      "Title": "How often have you been bothered by trouble falling or staying asleep, or sleeping too much?",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you been bothered by trouble falling or staying asleep, or sleeping too much?",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     },
     {
       "id": 4,
-      "Title": "How often have you been bothered by feeling tired or having little energy?",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you been bothered by feeling tired or having little energy?",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     },
     {
       "id": 5,
-      "Title": "How often have you been bothered by poor appetite or overeating?",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you been bothered by poor appetite or overeating?",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     },
     {
       "id": 6,
-      "Title": "How often have you been bothered by feeling bad about yourself, or that you are a failure, or have let yourself or your family down?",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you been bothered by feeling bad about yourself, or that you are a failure, or have let yourself or your family down?",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     },
     {
       "id": 7,
-      "Title": "How often have you been bothered by trouble concentrating on things, such as reading the newspaper or watching television?",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you been bothered by trouble concentrating on things, such as reading the newspaper or watching television?",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     },
     {
       "id": 8,
-      "Title": "How often have you been bothered by moving or speaking so slowly that other people could have noticed, or the opposite - being so fidgety or restless that you have been moving around a lot more than usual?",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you been bothered by moving or speaking so slowly that other people could have noticed, or the opposite - being so fidgety or restless that you have been moving around a lot more than usual?",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     },
     {
       "id": 9,
-      "Title": "How often have you been bothered by feeling nervous, anxious or on edge?",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you been bothered by feeling nervous, anxious or on edge?",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     },
     {
       "id": 10,
-      "Title": "How often have you been bothered by not being able to stop or control worrying?",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you been bothered by not being able to stop or control worrying?",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     },
     {
       "id": 11,
-      "Title": "How often have you been bothered by worrying too much about different things?\n",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you been bothered by worrying too much about different things?\n",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     },
     {
       "id": 12,
-      "Title": "How often have you been bothered by having trouble relaxing?\n",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you been bothered by having trouble relaxing?\n",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     },
     {
       "id": 13,
-      "Title": "How often have you been bothered by being so restless that it is hard to sit still?\n",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you been bothered by being so restless that it is hard to sit still?\n",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     },
     {
       "id": 14,
-      "Title": "How often have you been bothered by becoming easily annoyed or irritable?\n",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you been bothered by becoming easily annoyed or irritable?\n",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     },
     {
       "id": 15,
-      "Title": "How often have you been bothered by feeling afraid as if something awful might happen?\n",
-      "Choice1": "Not at all",
-      "Choice2": "Several days",
-      "Choice3": "More than half the days",
-      "Choice4": "Nearly every day"
+      "title": "How often have you been bothered by feeling afraid as if something awful might happen?\n",
+      "choice1": "Not at all",
+      "choice2": "Several days",
+      "choice3": "More than half the days",
+      "choice4": "Nearly every day"
     }
   ]
 }

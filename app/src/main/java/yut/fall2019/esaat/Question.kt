@@ -1,21 +1,22 @@
 package yut.fall2019.esaat
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 class QuestionModel {
     @SerializedName("Questions")
     var questions = arrayListOf<Question>()
 
-    class Question {
-        @SerializedName("Title")
-        var Title: String? = null
-        @SerializedName("Choice1")
-        var Choice1: String? = null
-        @SerializedName("Choice2")
-        var Choice2: String? = null
-        @SerializedName("Choice3")
-        var Choice3: String? = null
-        @SerializedName("Choice4")
-        var Choice4: String? = null
+     class Question : Serializable {
+        @SerializedName("title")
+        var title: String? = null
+        @SerializedName("choice1")
+        var choice1: String? = null
+        @SerializedName("choice2")
+        var choice2: String? = null
+        @SerializedName("choice3")
+        var choice3: String? = null
+        @SerializedName("choice4")
+        var choice4: String? = null
     }
 }

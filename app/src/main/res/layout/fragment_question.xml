@@ -19,7 +19,7 @@
 
             <TextView style="?android:textAppearanceMedium"
                 android:padding="16dp"
-                android:id="@+id/q_title"
+                android:id="@+id/title"
                 android:lineSpacingMultiplier="1.2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

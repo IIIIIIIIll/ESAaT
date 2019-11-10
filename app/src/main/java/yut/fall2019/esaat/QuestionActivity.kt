@@ -7,16 +7,17 @@ import androidx.viewpager.widget.ViewPager
 import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.net.Uri
 import android.util.Log
 import com.google.gson.Gson
 
 
-class QuestionActivity : AppCompatActivity(){   //, QuestionFragment.OnFragmentInteractionListener
+class QuestionActivity : AppCompatActivity(),QuestionFragment.OnFragmentInteractionListener{
+    override fun onFragmentInteraction(uri: Uri) {
 
-    private val arrayListFragments:ArrayList<Fragment>  = ArrayList()
+    }   //, QuestionFragment.OnFragmentInteractionListener
+
+    private val fragmentsList:ArrayList<Fragment>  = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +29,18 @@ class QuestionActivity : AppCompatActivity(){   //, QuestionFragment.OnFragmentI
         val sharedPref: SharedPreferences = getSharedPreferences("ESAaT", 0)
 
         val questionString = sharedPref.getString("questions","")
+        //Log.d("TAG",questionString + " data")
         val questions = Gson().fromJson(questionString,QuestionModel::class.java)
-        val t = questions.questions[0].Title
-        Log.d("TAG", t)
-        //TODO fill the arrayList with Fragments
-        val pagerAdapter = QuestionFragmentAdapter(supportFragmentManager,arrayListFragments)
+        val questionList = questions.questions
+        //Log.d("TAG",questionList[0].title + " title")
+        for (question: QuestionModel.Question in questionList) {
+            val bundle= Bundle()
+            bundle.putSerializable("question",question)
+            val frag = QuestionFragment.newInstance(question)
+            fragmentsList.add(frag)
+        }
+        //TODO add a final result page
+        val pagerAdapter = QuestionFragmentAdapter(supportFragmentManager,fragmentsList)
         pager.adapter =pagerAdapter
     }
 
