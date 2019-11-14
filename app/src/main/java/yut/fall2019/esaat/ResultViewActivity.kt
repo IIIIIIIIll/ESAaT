@@ -14,6 +14,9 @@ class ResultViewActivity : AppCompatActivity() {
         val sharedPref: SharedPreferences = getSharedPreferences("ESAaT", 0)
         val aScore = sharedPref.getInt("aScore",0)
         val dScore = sharedPref.getInt("dScore",0)
+
+
+
         Log.d("TAG", "aScore $aScore")
         Log.d("TAG","dScore $dScore")
     }

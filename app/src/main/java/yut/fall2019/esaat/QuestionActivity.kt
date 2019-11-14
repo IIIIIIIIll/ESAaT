@@ -12,7 +12,7 @@ import android.util.Log
 import com.google.gson.Gson
 
 
-class QuestionActivity : AppCompatActivity(),QuestionFragment.OnFragmentInteractionListener{
+class QuestionActivity : AppCompatActivity(),QuestionFragment.OnFragmentInteractionListener,EndFragment.OnFragmentInteractionListener{
     override fun onFragmentInteraction(uri: Uri) {
 
     }   //, QuestionFragment.OnFragmentInteractionListener
@@ -39,6 +39,8 @@ class QuestionActivity : AppCompatActivity(),QuestionFragment.OnFragmentInteract
             val frag = QuestionFragment.newInstance(question)
             fragmentsList.add(frag)
         }
+        val endFrag = EndFragment.newInstance()
+        fragmentsList.add(endFrag)
         //TODO add a final result page
         val pagerAdapter = QuestionFragmentAdapter(supportFragmentManager,fragmentsList)
         pager.adapter =pagerAdapter

@@ -31,8 +31,6 @@ private const val ARG_PARAM1 = "questionData"
  * create an instance of this fragment.
  */
 class QuestionFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    //private var questionData: String? = null
     private var question: QuestionModel.Question? = null
     private var listener: OnFragmentInteractionListener? = null
     private var checkBoxLayout: LinearLayout? = null
@@ -100,12 +98,11 @@ class QuestionFragment : Fragment() {
                     //Log.d("TAG", currentScore.toString())
                     editor.putInt(scoreName,oldScore+currentScore)
                     editor.apply()
-                    if (question!!.id!! == 15){
-                        val i = Intent(context,ResultViewActivity::class.java)
-                        startActivity(i)
-                    }else{
-                        (context as QuestionActivity).goToNext()
-                    }
+//                    if (question!!.id!! == 15){
+//                        (context as QuestionActivity).surveyCompleted(currentScore)
+//                    }else{
+                    (context as QuestionActivity).goToNext()
+                    //}
                 }
             }
         }
