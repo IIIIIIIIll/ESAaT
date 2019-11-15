@@ -27,7 +27,10 @@ class QuestionActivity : AppCompatActivity(),QuestionFragment.OnFragmentInteract
 
         val pager:ViewPager = findViewById(R.id.pager)
         val sharedPref: SharedPreferences = getSharedPreferences("ESAaT", 0)
-
+        val editor = sharedPref.edit()
+        editor.putInt("dScore",0)
+        editor.putInt("aScore",0)
+        editor.apply()
         val questionString = sharedPref.getString("questions","")
         //Log.d("TAG",questionString + " data")
         val questions = Gson().fromJson(questionString,QuestionModel::class.java)
@@ -41,7 +44,7 @@ class QuestionActivity : AppCompatActivity(),QuestionFragment.OnFragmentInteract
         }
         val endFrag = EndFragment.newInstance()
         fragmentsList.add(endFrag)
-        //TODO add a final result page
+
         val pagerAdapter = QuestionFragmentAdapter(supportFragmentManager,fragmentsList)
         pager.adapter =pagerAdapter
     }

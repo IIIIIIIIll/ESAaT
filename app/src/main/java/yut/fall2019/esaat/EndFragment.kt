@@ -1,8 +1,10 @@
 package yut.fall2019.esaat
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +43,30 @@ class EndFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         context = activity
         ok!!.setOnClickListener{(context as QuestionActivity).surveyCompleted(0)}
+        val sharedPref: SharedPreferences =  context!!.getSharedPreferences("ESAaT", 0)
+        val depressionScore:Int = sharedPref.getInt("dScore",-1)
+        val anxietyScore : Int = sharedPref.getInt("aScore",-1)
+        var text = "Your depression score is $depressionScore and your anxiety score is $anxietyScore. \n"
+        text += when (depressionScore) {
+            0 -> "Based on your responses to questions 1-8, you're not experiencing many of the symptoms seen in depression. However, if you have any concerns about your health or mood, please seek consultant. \n"
+            1,2,3,4 -> "Based on your responses to questions 1-8, you're experiencing some of the symptoms seen in minimal depression. However, if you have any concerns about your health or mood, please seek consultant. \n"
+            5,6,7,8,9 -> "Based on your responses to questions 1-8, you're experiencing some of the symptoms seen in mild depression. However, if you have any concerns about your health or mood, please seek consultant. \n"
+            10,11,12,13,14 -> "Based on your responses to questions 1-8, you're experiencing some of the symptoms seen in moderate depression. Please consider seeking consultant on your mood and health. \n"
+            15,16,17,18,19 -> "Based on your responses to questions 1-8, you're experiencing some of the symptoms seen in moderately severe depression.Please seeking consultant on your mood and health immediately. \n"
+            20,21,22,23,24 -> "Based on your responses to questions 1-8, you're experiencing some of the symptoms seen in severe depression. Please seeking consultant on your mood and health immediately or call 800-950-NAMI (6264). \n"
+            else -> "Something is wrong with depression analysis\n"
+        }
+        text += when (anxietyScore) {
+            0,1,2,3,4 -> "Your anxiety score shows you have little or none symptoms of anxiety."
+            5,6,7,8,9 -> "Your anxiety score shows you have mild symptoms of anxiety. Please continue monitoring your mood status"
+            10,11,12,13,14 -> "Your anxiety score shows you have little or none symptoms of anxiety."
+            15,16,17,18,19,20,21-> "Your anxiety score shows you have little or none symptoms of anxiety."
+            else -> "Something is wrong with anxiety analysis"
+        }
+        //feedBack!!.text.set (TypedValue.COMPLEX_UNIT_SP, 16f)
+        title!!.text = getString(R.string.EndTitle)
+        feedBack!!.text = text
+        //TODO save the score into long term memory
     }
 
     fun onButtonPressed(uri: Uri) {
