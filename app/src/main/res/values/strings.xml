@@ -8,4 +8,6 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="EndTitle">The system has generated a score for you</string>
+    <string name="depression_graph">Depression Graph</string>
+    <string name="anxiety_graph">Anxiety Graph</string>
 </resources>

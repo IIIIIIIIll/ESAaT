@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -46,6 +47,17 @@ class EndFragment : Fragment() {
         val sharedPref: SharedPreferences =  context!!.getSharedPreferences("ESAaT", 0)
         val depressionScore:Int = sharedPref.getInt("dScore",-1)
         val anxietyScore : Int = sharedPref.getInt("aScore",-1)
+        //TODO save the score into long term memory
+        var dList = sharedPref.getString("depressionMemory", "")
+        var aList = sharedPref.getString("anxietyMemory", "")
+        dList = dList!!.plus("$depressionScore ")
+        aList = aList!!.plus("$anxietyScore ")
+//        Log.d("TAG",dList)
+//        Log.d("TAG",aList)
+        val editor = sharedPref.edit()
+        editor.putString("depressionMemory",dList)
+        editor.putString("anxietyMemory",aList)
+        editor.apply()
         var text = "Your depression score is $depressionScore and your anxiety score is $anxietyScore. \n"
         text += when (depressionScore) {
             0 -> "Based on your responses to questions 1-8, you're not experiencing many of the symptoms seen in depression. However, if you have any concerns about your health or mood, please seek consultant. \n"
@@ -66,7 +78,6 @@ class EndFragment : Fragment() {
         //feedBack!!.text.set (TypedValue.COMPLEX_UNIT_SP, 16f)
         title!!.text = getString(R.string.EndTitle)
         feedBack!!.text = text
-        //TODO save the score into long term memory
     }
 
     fun onButtonPressed(uri: Uri) {
@@ -99,7 +110,6 @@ class EndFragment : Fragment() {
      * for more information.
      */
     interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         fun onFragmentInteraction(uri: Uri)
     }
 
@@ -112,7 +122,6 @@ class EndFragment : Fragment() {
          * @param param2 Parameter 2.
          * @return A new instance of fragment EndFragment.
          */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance() =
                 EndFragment().apply {
