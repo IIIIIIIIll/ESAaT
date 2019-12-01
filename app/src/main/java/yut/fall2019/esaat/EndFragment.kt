@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.util.TypedValue
 import androidx.fragment.app.Fragment
@@ -47,7 +48,6 @@ class EndFragment : Fragment() {
         val sharedPref: SharedPreferences =  context!!.getSharedPreferences("ESAaT", 0)
         val depressionScore:Int = sharedPref.getInt("dScore",-1)
         val anxietyScore : Int = sharedPref.getInt("aScore",-1)
-        //TODO save the score into long term memory
         var dList = sharedPref.getString("depressionMemory", "")
         var aList = sharedPref.getString("anxietyMemory", "")
         dList = dList!!.plus("$depressionScore ")
@@ -70,13 +70,14 @@ class EndFragment : Fragment() {
         }
         text += when (anxietyScore) {
             0,1,2,3,4 -> "Your anxiety score shows you have little or none symptoms of anxiety."
-            5,6,7,8,9 -> "Your anxiety score shows you have mild symptoms of anxiety. Please continue monitoring your mood status"
-            10,11,12,13,14 -> "Your anxiety score shows you have little or none symptoms of anxiety."
-            15,16,17,18,19,20,21-> "Your anxiety score shows you have little or none symptoms of anxiety."
+            5,6,7,8,9 -> "Your anxiety score shows you have mild symptoms of anxiety. Please continue monitoring your mood status."
+            10,11,12,13,14 -> "Your anxiety score shows you have some symptoms of anxiety. Please consider seeking help from professionals."
+            15,16,17,18,19,20,21-> "Your anxiety score shows you sever symptoms of anxiety. Seek help immediately."
             else -> "Something is wrong with anxiety analysis"
         }
         //feedBack!!.text.set (TypedValue.COMPLEX_UNIT_SP, 16f)
         title!!.text = getString(R.string.EndTitle)
+        feedBack!!.movementMethod =ScrollingMovementMethod()
         feedBack!!.text = text
     }
 
